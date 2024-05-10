@@ -5,7 +5,7 @@ fn get_input() -> String {
     std::io::stdin()
         .read_line(&mut word)
         .expect("Failed to read line");
-    return word;
+    word.trim().to_string()
 }
 
 fn user_hand_manager() -> String {
@@ -42,33 +42,24 @@ fn cpu_hand_manager() -> String {
 }
 
 fn judge(user_hand: &str, cpu_hand: &str) -> String {
-    //ユーザとCPUの操作を比較し、すべてのパターンを網羅
-    if user_hand == "Rock" {
-        if cpu_hand == "Rock" {
-            return "Draw".to_string();
-        }else if cpu_hand == "Paper" {
-            return "cpu".to_string();
-        }else {
-            return  "user".to_string();
-        }
-    }else if user_hand == "Paper" {
-        if cpu_hand == "Rock" {
-            return "user".to_string();
-        }else if cpu_hand == "Paper" {
-            return "Draw".to_string();
-        }else {
-            return  "cpu".to_string();
-        }
-    }else if user_hand == "Scissors" {
-        if cpu_hand == "Rock" {
-            return "cpu".to_string();
-        }else if cpu_hand == "Paper" {
-            return  "user".to_string();
-        }else {
-            return "Draw".to_string();
-        }
-    }else {
-        return "".to_string();
+    // 勝敗判断
+    let user_hand_num = match user_hand {
+        "Rock" => 0,
+        "Paper" => 1,
+        _ => 2,
+    };
+    
+    let cpu_hand_num = match cpu_hand {
+        "Rock" => 0,
+        "Paper" => 1,
+        _ => 2,
+    };
+
+    let judge_num = (user_hand_num - cpu_hand_num + 3) % 3;
+    match judge_num {
+        0 => "draw".to_string(),
+        1 => "user".to_string(),
+        _ => "cpu".to_string(),
     }
 }
 
@@ -104,11 +95,11 @@ fn main() {
         
         //結果表示
         if winner == "user" {
-            println!("You are win!");
+            println!("You win!");
         }else if winner == "cpu" {
-            println!("You are lose...");
+            println!("You lose...");
         }else {
-            println!("We are draw.\nagain.");
+            println!("We draw.\nagain.");
             continue; //drawの場合はもう一度やるのでループをスキップ
         }
         println!("-----------------\n");
