@@ -1,4 +1,3 @@
-workspace = { members = ["adder"] }
 [package]
 name = "rock_paper_scissors"
 version = "0.1.0"
