@@ -9,6 +9,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
+name = "get_input"
+version = "0.1.0"
+source = "git+https://github.com/ulibo-yuki/get_input#733a6ec6c47df0d730997841194c528c16be038b"
+
+[[package]]
 name = "getrandom"
 version = "0.2.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -65,6 +70,7 @@ dependencies = [
 name = "rock_paper_scissors"
 version = "0.1.0"
 dependencies = [
+ "get_input",
  "rand",
 ]
 

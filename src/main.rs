@@ -1,12 +1,5 @@
 use rand::Rng; // 0.8.5
-
-fn get_input() -> String {
-    let mut word = String::new();
-    std::io::stdin()
-        .read_line(&mut word)
-        .expect("Failed to read line");
-    word.trim().to_string()
-}
+use get_input::get_input;
 
 fn user_hand_manager() -> String {
     // ユーザの操作制御
