@@ -26,7 +26,7 @@ fn user_hand_manager() -> String {
 }
 
 fn cpu_hand_manager() -> String {
-    //CPUの制御
+    //CPU側の制御
     let hand_num = rand::thread_rng().gen_range(0..3); //操作判断のため、乱数生成
     match hand_num { //各値によって操作を決定
         0 => {
